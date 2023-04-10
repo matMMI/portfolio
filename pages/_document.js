@@ -1,4 +1,5 @@
 import Document, { Head, Html, Main, NextScript } from "next/document";
+import Script from "next/script";
 class MyDocument extends Document {
   render() {
     return (
@@ -13,6 +14,10 @@ class MyDocument extends Document {
         <body>
           <Main />
           <NextScript />
+          <Script src="/js/jqueryLatest.js" strategy="beforeInteractive" />
+          <Script src="/js/isotope.js" strategy="beforeInteractive" />
+          <Script src="/js/imageLoaded.js" strategy="beforeInteractive" />
+          <Script src="/js/main.js" strategy="beforeInteractive" />
         </body>
       </Html>
     );
