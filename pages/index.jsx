@@ -100,7 +100,7 @@ const HomePage = ({ pages }) => {
 };
 export async function getServerSideProps() {
   const response = await axios.get(
-    "https://mathistogni.fr/wp-json/acf/v3/pages"
+    "https://apiportfolio.mathistogni.fr/wp-json/acf/v3/pages"
   );
   const data = await response.data;
   return {
@@ -109,5 +109,4 @@ export async function getServerSideProps() {
     },
   };
 }
-
 export default HomePage;
