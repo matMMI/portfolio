@@ -6,6 +6,10 @@ class MyDocument extends Document {
       <Html lang="fr">
         <Head>
           <title>→ MATHIS TOGNI – WORDPRESS DEVELOPER & UX/UI DESIGNER</title>
+          <meta
+            name="description"
+            content="Étudiant en Master UX/UI à l'UFR Ingémédia de Toulon, j'aime créer des projets autour du Web, de la conception graphique jusqu'au développement de sites sur mesure."
+          />
           <link
             rel="shortcut icon"
             href="https://apiportfolio.mathistogni.fr/favicon.ico"
