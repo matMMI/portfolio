@@ -26,8 +26,10 @@ html {
   scroll-behavior: smooth;
 }
 body {
+  background-color: #000;
   font-family: Montserrat;
   overflow-x: hidden;
+  font-size: clamp(0.8125rem, 0.8125rem + 2 * (100vw - 640px) / 656, 0.9375rem);
 }
 a,
 p {
@@ -93,9 +95,7 @@ template {
 [hidden] {
   display: none;
 }
-body {
-  font-size: clamp(0.8125rem, 0.8125rem + 2 * (100vw - 640px) / 656, 0.9375rem);
-}
+
 .h1,
 h1 {
   font-size: clamp(1.8rem, 2.25rem + 28 * (100vw - 640px) / 656, 3rem);
@@ -110,10 +110,6 @@ img,
 svg {
   max-width: 100%;
   height: auto;
-}
-body {
-  background-color: #000;
-  overflow-y: hidden;
 }
 .e {
   overflow-y: auto;

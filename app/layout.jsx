@@ -1,9 +1,8 @@
 import Footer from "../components/footer";
-import Header from "../components/header";
+
 function Layout(props) {
   return (
     <>
-      <Header />
       <main id="smooth-wrapper">
         <div id="smooth-content">
           <div className="me">

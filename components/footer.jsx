@@ -1,22 +1,6 @@
 import React, { useEffect } from "react";
 
 export default function Footer() {
-  useEffect(() => {
-    const loader = document.querySelector(".loader");
-    const body = document.querySelector("body");
-    var element = document.getElementById("loader");
-
-    window.addEventListener("load", () => {
-      setTimeout(() => {
-        body.classList.add("e");
-        loader.classList.add("move");
-      }, 500);
-    });
-
-    element.addEventListener("transitionend", function () {
-      element.parentNode.removeChild(element);
-    });
-  });
   return (
     <footer>
       <p>Conception et développement par Mathis Togni</p>
