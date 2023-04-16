@@ -5,7 +5,7 @@ class MyDocument extends Document {
     return (
       <Html lang="fr">
         <Head>
-          <title>→ MATHIS TOGNI – WORDPRESS DEVELOPER & UX/UI DESIGNER</title>
+          <title>→ MATHIS TOGNI – WEB DEVELOPER & UX/UI DESIGNER</title>
           <meta
             name="description"
             content="Étudiant en Master UX/UI à l'UFR Ingémédia de Toulon, j'aime créer des projets autour du Web, de la conception graphique jusqu'au développement de sites sur mesure."
