@@ -71,7 +71,7 @@ const HomePage = ({ pages }) => {
                 <div className="text">
                   <div>
                     <h2> {blocImage.titre}</h2>
-                    <p> {blocImage.filtre}</p>
+                    <p> {blocImage.dropdown}</p>
                   </div>
                   <div className="link">
                     <a href={blocImage.lien} target="_blank">
