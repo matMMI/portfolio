@@ -711,7 +711,7 @@ svg#calque1 {
   width: 70px;
   cursor: pointer;
 }
-@media (max-width: 580px) {
+@media (max-width: 720px) {
   .filter {
     bottom: 0;
     margin: 0 auto 2rem;
@@ -730,7 +730,7 @@ svg#calque1 {
     margin: 0 0.7rem;
   }
 }
-@media (max-width: 500px) {
+@media (max-width: 550px) {
   .filter {
     bottom: 0;
     width: 100%;
@@ -739,7 +739,7 @@ svg#calque1 {
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 0 1rem;
+    padding: 0 0.7rem;
   }
   .filter ul {
     display: inherit;
@@ -752,8 +752,6 @@ svg#calque1 {
     margin: 0 0.25rem;
   }
   .btnFilter {
-    border-radius: 0;
-    margin: 0;
     right: 0;
     bottom: 0;
   }
