@@ -1,5 +1,6 @@
 import axios from "axios";
 import Layout from "../app/layout";
+import Image from "next/image";
 const HomePage = ({ pages }) => {
   return (
     <Layout>
@@ -13,7 +14,12 @@ const HomePage = ({ pages }) => {
                   data-filter={`.${flt.filtre}`}
                   key={flt.image}
                 >
-                  <img src={flt.image} alt={flt.filtre} />
+                  <Image
+                    width={100}
+                    height={100}
+                    src={flt.image}
+                    alt={flt.filtre}
+                  />
                 </li>
               ))
             )}
