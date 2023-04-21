@@ -2,9 +2,9 @@
 const NotFoundPage = () => {
   return (
     <>
-      <div class="error">
-        <div class="conte">
-          <h1 class="text" data-text="404 ERROR">
+      <div className="error">
+        <div className="conte">
+          <h1 className="text" data-text="404 ERROR">
             404 ERROR
           </h1>
         </div>
