@@ -1,7 +1,7 @@
 import axios from "axios";
 import Layout from "../app/layout";
 import Image from "next/image";
-import Script from "next/script";
+
 const HomePage = ({ pages }) => {
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: "smooth" });
@@ -68,10 +68,6 @@ const HomePage = ({ pages }) => {
           ))
         )}
       </div>
-      <Script src="/js/jqueryLatest.js" />
-      <Script src="/js/isotope.js" />
-      <Script src="/js/imageLoaded.js" />
-      <Script src="/js/main.js" />
     </Layout>
   );
 };
