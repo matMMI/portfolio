@@ -47,7 +47,7 @@ const HomePage = ({ pages }) => {
               key={blocImage.image}
               onClick={() => {}}
             >
-              <div target="_blank" className="square">
+              <div className="square">
                 <div className="content">
                   <div
                     className="img"
