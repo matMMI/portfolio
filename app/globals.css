@@ -373,7 +373,7 @@ svg#calque1 {
   justify-content: center;
   align-items: center;
 }
-.conte .text {
+.conte .textError {
   position: relative;
   color: #fff;
   font-weight: 700;
@@ -384,17 +384,17 @@ svg#calque1 {
   text-transform: uppercase;
 }
 @media (max-width: 959.98px) {
-  .conte .text {
+  .conte .textError {
     font-size: 25px;
   }
 }
 @media (max-width: 500px) {
-  .conte .text {
+  .conte .textError {
     font-size: 20px;
   }
 }
-.conte .text:before,
-.conte .text:after {
+.conte .textError:before,
+.conte .textError:after {
   padding: 30px;
   color: white;
   content: attr(data-text);
@@ -405,12 +405,12 @@ svg#calque1 {
   overflow: hidden;
   top: 0;
 }
-.conte .text:before {
+.conte .textError:before {
   left: 3px;
   text-shadow: -2px 0 red;
   animation: glitch-1 2s linear infinite reverse;
 }
-.conte .text:after {
+.conte .textError:after {
   left: -3px;
   text-shadow: -2px 0 blue;
   animation: glitch-2 2s linear infinite reverse;

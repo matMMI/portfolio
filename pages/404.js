@@ -4,7 +4,7 @@ const NotFoundPage = () => {
     <>
       <div className="error">
         <div className="conte">
-          <h1 className="text" data-text="404 ERROR">
+          <h1 className="textError" data-text="404 ERROR">
             404 ERROR
           </h1>
         </div>
