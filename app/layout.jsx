@@ -10,11 +10,11 @@ function Layout(props) {
             <h1>
               <span className="txt t1">
                 – MATHIS TOGNI – MASTER’S STUDENT AT INGEMEDIA – WEB DEVELOPER &
-                UX/UI DESIGNER{" "}
+                UX/UI DESIGNER&nbsp;
               </span>
               <span className="txt t2">
                 – MATHIS TOGNI – MASTER’S STUDENT AT INGEMEDIA – WEB DEVELOPER &
-                UX/UI DESIGNER{" "}
+                UX/UI DESIGNER&nbsp;
               </span>
             </h1>
           </div>
