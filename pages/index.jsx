@@ -3,18 +3,6 @@ import Layout from "../app/layout";
 import Image from "next/image";
 
 const HomePage = ({ pages }) => {
-  const handleClick = (event, url) => {
-    const isMobile =
-      /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(
-        navigator.userAgent
-      );
-    if (isMobile) {
-      event.preventDefault();
-      setTimeout(() => {
-        window.open(url, "_blank");
-      }, 1000);
-    }
-  };
   return (
     <Layout>
       <div style={{ display: "flex", justifyContent: "center" }}>
@@ -67,13 +55,7 @@ const HomePage = ({ pages }) => {
                     <h2> {blocImage.titre}</h2>
                     <p> {blocImage.dropdown}</p>
                   </div>
-                  <a
-                    className="link"
-                    href={blocImage.lien}
-                    onClick={(event) => handleClick(event, blocImage.lien)}
-                    target="_blank"
-                    rel="noreferrer"
-                  >
+                  <a className="link" href={blocImage.lien} target="_blank">
                     VOIR
                   </a>
                 </div>
