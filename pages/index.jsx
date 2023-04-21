@@ -60,7 +60,7 @@ const HomePage = ({ pages }) => {
                     <p> {blocImage.dropdown}</p>
                   </div>
                   <a className="link" href={blocImage.lien} target="_blank">
-                    VOIR
+                    VOIR PLUS
                   </a>
                 </div>
               </div>
