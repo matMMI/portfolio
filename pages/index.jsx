@@ -3,6 +3,9 @@ import Layout from "../app/layout";
 import Image from "next/image";
 
 const HomePage = ({ pages }) => {
+  const scrollToTop = () => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  };
   return (
     <Layout>
       <div style={{ display: "flex", justifyContent: "center" }}>
@@ -14,6 +17,7 @@ const HomePage = ({ pages }) => {
                   className="icon"
                   data-filter={`.${flt.filtre}`}
                   key={flt.image}
+                  onClick={scrollToTop}
                 >
                   <Image
                     width={100}
