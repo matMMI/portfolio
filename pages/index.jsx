@@ -72,6 +72,7 @@ const HomePage = ({ pages }) => {
                     href={blocImage.lien}
                     onClick={(event) => handleClick(event, blocImage.lien)}
                     target="_blank"
+                    rel="noreferrer"
                   >
                     VOIR
                   </a>
