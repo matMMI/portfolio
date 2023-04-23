@@ -1,7 +1,6 @@
 import "../app/globals.css";
 import { useState, useEffect } from "react";
 import Head from "next/head";
-import Image from "next/image";
 
 function MyApp({ Component, pageProps }) {
   const [isLoading, setIsLoading] = useState({
@@ -19,7 +18,6 @@ function MyApp({ Component, pageProps }) {
       setTimeout(() => {
         setIsLoading({
           visible: false,
-          translateY: "-100%",
         });
       }, 2510);
     };
