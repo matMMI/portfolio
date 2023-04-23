@@ -235,8 +235,7 @@ html {
   bottom: 0;
   transition: 0.3s;
   width: 100%;
-
-  transform: translateY(100%);
+  transform: translateY(101%);
 }
 
 .title_item {
@@ -254,9 +253,8 @@ html {
 }
 .item:hover .text {
   transition: 0.3s;
-  transform: translateY(0);
+  transform: translateY(1%);
 }
-
 .item .square .img {
   aspect-ratio: 1/1;
   background-size: cover;
@@ -267,7 +265,6 @@ html {
 .item:hover .img {
   filter: grayscale(0);
 }
-
 @media (max-width: 1150px) {
   .item {
     width: 33.3333333333%;
@@ -301,17 +298,14 @@ footer p {
   padding: 0rem 0 1rem 0;
   color: #fff;
 }
+
+/* -------------------- LOADER -------------------- */
+
 .loader {
-  position: fixed;
-  width: 100%;
-  height: 100%;
-  background: #000;
   display: flex;
   justify-content: center;
   align-items: center;
-  z-index: 99999;
-  right: 0;
-  overflow-y: hidden;
+  width: 70px;
 }
 .loader svg g {
   -webkit-animation: loader 2s linear infinite;
@@ -345,13 +339,9 @@ footer p {
     fill: #fff;
   }
 }
-.move {
-  right: 100%;
-  transition: 2s cubic-bezier(0.5, 0, 0, 1);
-}
-svg#calque1 {
-  width: 70px;
-}
+
+/* -------------------- LOADER -------------------- */
+
 @media (max-width: 959.98px) {
   .me h1 .txt {
     font-size: 40px;
@@ -593,7 +583,7 @@ svg#calque1 {
   align-items: center;
   transition: 0.3s;
   position: fixed;
-  z-index: 9999;
+  z-index: 9;
   background: #000;
   bottom: 1rem;
   border-radius: 20px;
