@@ -545,21 +545,24 @@ footer p {
     clip: rect(83px, auto, 40px, 30px);
   }
 }
-
 .filter {
   transform: translateY(150%);
   transition: 0.3s;
-  background-color: #000;
   position: fixed;
   height: 90px;
   z-index: 999;
-  border-radius: 20px;
   bottom: 0;
   margin: 0 auto 2rem;
   display: flex;
   align-items: center;
   justify-content: center;
   padding: 0 1rem;
+  background: rgba(255, 255, 255, 0);
+  border-radius: 16px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(4.7px);
+  -webkit-backdrop-filter: blur(4.7px);
+  border: 1px solid rgba(255, 255, 255, 0.24);
 }
 .filter ul {
   display: inherit;
@@ -603,6 +606,10 @@ footer p {
 }
 @media (max-width: 720px) {
   .filter {
+    border-top: 1px solid rgba(255, 255, 255, 0.24);
+    border-bottom: 0px;
+    border-left: 0px;
+    border-right: 0px;
     bottom: 0;
     margin: 0 auto 2rem;
     display: flex;
