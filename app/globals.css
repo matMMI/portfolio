@@ -572,7 +572,7 @@ footer p {
   cursor: pointer;
   width: 50px;
   display: inherit;
-  margin: 0 1rem;
+  margin: 0 0.6rem;
   transition: 0.3s;
 }
 .filter ul li:hover {
