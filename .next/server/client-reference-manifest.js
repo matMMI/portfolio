@@ -1,0 +1,1 @@
+self.__RSC_MANIFEST={"__ssr_module_mapping__":{},"__edge_ssr_module_mapping__":{},"__entry_css_files__":{},"/Users/mathistogni/Desktop/portfolio/app/globals.css#":{"id":"5006","name":"","chunks":["static/css/dee5b6c6defd2a41.css"]}}
