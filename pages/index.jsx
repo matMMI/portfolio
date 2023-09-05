@@ -1,4 +1,5 @@
 import axios from "axios";
+import { useEffect } from "react";
 import Layout from "../app/layout";
 import Image from "next/image";
 
@@ -6,6 +7,7 @@ const HomePage = ({ pages }) => {
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: "smooth" });
   };
+
   return (
     <Layout>
       <div style={{ display: "flex", justifyContent: "center" }}>
@@ -71,6 +73,7 @@ const HomePage = ({ pages }) => {
     </Layout>
   );
 };
+
 export async function getServerSideProps() {
   const response = await axios.get(
     "https://apiportfolio.mathistogni.fr/wp-json/acf/v3/pages"
@@ -82,4 +85,5 @@ export async function getServerSideProps() {
     },
   };
 }
+
 export default HomePage;

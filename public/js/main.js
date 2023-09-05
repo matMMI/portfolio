@@ -5,7 +5,6 @@ function initIsotope() {
     $grid.isotope({ filter: filterValue });
   });
 }
-
 $(document).ready(function () {
   $(document).imagesLoaded(function () {
     initIsotope();
@@ -15,7 +14,6 @@ $(document).ready(function () {
     }, 100);
   });
 });
-
 const closeButton = document.querySelector(".close");
 const btnFilter = document.querySelector(".btnFilter");
 const filter = document.querySelector(".filter");

@@ -31,7 +31,8 @@
     "components/footer.jsx",
     "components/header.jsx",
     "pages/index.jsx",
-    "app/layout.jsx"
+    "app/layout.jsx",
+    "app/p/page.jsx"
   ],
   "exclude": ["node_modules"]
 }
