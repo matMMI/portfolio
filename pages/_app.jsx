@@ -1,6 +1,5 @@
 import "../app/globals.scss";
 import { useState, useEffect } from "react";
-
 import Head from "next/head";
 import { AnimatePresence, motion } from "framer-motion";
 function MyApp({ Component, pageProps, router }) {
