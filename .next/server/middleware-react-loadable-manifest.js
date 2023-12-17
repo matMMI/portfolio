@@ -1,1 +1,0 @@
-self.__REACT_LOADABLE_MANIFEST={"index.jsx -> imagesloaded":{"id":"index.jsx -> imagesloaded","files":["static/chunks/node_modules_imagesloaded_imagesloaded_js.js"]},"index.jsx -> isotope-layout":{"id":"index.jsx -> isotope-layout","files":["static/chunks/node_modules_isotope-layout_js_isotope_js.js"]}}
