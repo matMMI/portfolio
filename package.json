@@ -9,10 +9,13 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@barba/core": "^2.9.7",
     "@emotion/react": "^11.10.6",
     "@emotion/styled": "^11.10.6",
     "@mui/material": "^5.11.14",
+    "@socialgouv/matomo-next": "^1.7.0",
     "@studio-freight/lenis": "^1.0.19",
+    "@types/isotope-layout": "^3.0.12",
     "@types/node": "18.15.3",
     "@types/react": "18.0.28",
     "@types/react-dom": "18.0.11",
@@ -20,9 +23,10 @@
     "eslint": "8.36.0",
     "eslint-config-next": "13.2.4",
     "export": "^0.1.337",
+    "framer-motion": "^10.16.16",
     "imagesloaded": "^5.0.0",
     "isotope-layout": "^3.0.6",
-    "jquery": "^3.6.4",
+    "jquery": "^3.7.1",
     "lottie-react": "^2.4.0",
     "muuri": "^0.9.5",
     "next": "13.2.4",
@@ -43,7 +47,8 @@
     "postcss-loader": "^7.3.3",
     "postcss-preset-env": "^8.3.2",
     "purgecss": "^5.0.0",
-    "react-xmasonry": "^3.0.6"
+    "react-xmasonry": "^3.0.6",
+    "sass": "^1.69.4"
   },
   "browserslist": [
     "> 0.5%",

@@ -1,4 +1,3 @@
-// pages/404.js
 const NotFoundPage = () => {
   return (
     <>

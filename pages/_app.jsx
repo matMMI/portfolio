@@ -1,10 +1,16 @@
-import "../app/globals.css";
+import "../app/globals.scss";
 import { useState, useEffect } from "react";
+
 import Head from "next/head";
-import Script from "next/script";
-import Lottie from "lottie-react";
-import logo from "./logo.json";
-function MyApp({ Component, pageProps }) {
+import { AnimatePresence, motion } from "framer-motion";
+function MyApp({ Component, pageProps, router }) {
+  const transitionSpringPhysics = {
+    type: "spring",
+    mass: 1,
+    stiffness: 80,
+    damping: 10,
+  };
+  const transitionColor = "#000000";
   const [isLoading, setIsLoading] = useState({
     visible: true,
     translateY: "0%",
@@ -31,7 +37,6 @@ function MyApp({ Component, pageProps }) {
         handleLoad();
       } else {
         window.addEventListener("load", handleLoad);
-
         return () => {
           window.removeEventListener("load", handleLoad);
         };
@@ -41,30 +46,66 @@ function MyApp({ Component, pageProps }) {
   return (
     <>
       <Head>
-        <title>→ MATHIS TOGNI – WEB DEVELOPER & UX/UI DESIGNER</title>
-        <Script src="https://cdnjs.cloudflare.com/ajax/libs/lottie-web/5.12.2/lottie.min.js" />
-      </Head>
-      {isLoading.visible ? (
-        <div
-          style={{
-            position: "fixed",
-            top: 0,
-            left: 0,
-            width: "100%",
-            height: "100%",
-            backgroundColor: "black",
-            display: "flex",
-            justifyContent: "center",
-            alignItems: "center",
-            zIndex: 1000,
-            transform: `translateY(${isLoading.translateY})`,
-            transition: "2s cubic-bezier(.42,0,0,.98)",
+        <title>→ Mathis TOGNI · WEB DEVELOPER & UX/UI DESIGNER</title>
+        <meta
+          name="description"
+          content="Étudiant en Master UX/UI à l'UFR Ingémédia de Toulon, j'aime créer des projets autour du Web, de la conception graphique jusqu'au développement de sites sur mesure."
+        />
+        <link
+          rel="icon"
+          href="https://apiportfolio.mathistogni.fr/favicon.ico"
+          sizes="any"
+        />
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+        var _paq = (window._paq = window._paq || []);
+        _paq.push(["trackPageView"]);
+        _paq.push(["enableLinkTracking"]);
+        (function () {
+          var u = "//matomo.mathistogni.fr/";
+          _paq.push(["setTrackerUrl", u + "matomo.php"]);
+          _paq.push(["setSiteId", "1"]);
+          var d = document,
+            g = d.createElement("script"),
+            s = d.getElementsByTagName("script")[0];
+          g.async = true;
+          g.src = u + "matomo.js";
+          s.parentNode.insertBefore(g, s);
+        })();
+       `,
           }}
-        >
-          <Lottie style={styleLottie} loop={true} animationData={logo} />
-        </div>
-      ) : null}
-      <Component {...pageProps} />
+        />
+      </Head>
+      <AnimatePresence mode="wait">
+        <motion.div key={router.route}>
+          <motion.div
+            style={{
+              backgroundColor: transitionColor,
+              position: "fixed",
+              width: "100vw",
+              zIndex: 1000,
+              bottom: 0,
+            }}
+            transition={transitionSpringPhysics}
+            animate={{ height: "0vh" }}
+            exit={{ height: "100vh" }}
+          />
+          <motion.div
+            style={{
+              backgroundColor: transitionColor,
+              position: "fixed",
+              width: "100vw",
+              zIndex: 1000,
+              top: 0,
+            }}
+            transition={transitionSpringPhysics}
+            initial={{ height: "100vh" }}
+            animate={{ height: "0vh", transition: { delay: 0.2 } }}
+          />
+          <Component {...pageProps} />
+        </motion.div>
+      </AnimatePresence>
     </>
   );
 }
