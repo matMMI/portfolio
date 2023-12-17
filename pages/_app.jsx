@@ -10,37 +10,18 @@ function MyApp({ Component, pageProps, router }) {
     damping: 10,
   };
   const transitionColor = "#000000";
-  const [isLoading, setIsLoading] = useState({
-    visible: true,
-    translateY: "0%",
-  });
+  const [isLoading, setIsLoading] = useState(true);
   const styleLottie = {
     width: 100,
   };
   useEffect(() => {
-    const handleLoad = () => {
-      setTimeout(() => {
-        setIsLoading({
-          visible: true,
-          translateY: "-100%",
-        });
-      }, 500);
-      setTimeout(() => {
-        setIsLoading({
-          visible: false,
-        });
-      }, 2510);
+    const handlePageReady = () => {
+      setIsLoading(false);
     };
-    if (typeof window !== "undefined") {
-      if (document.readyState === "complete") {
-        handleLoad();
-      } else {
-        window.addEventListener("load", handleLoad);
-        return () => {
-          window.removeEventListener("load", handleLoad);
-        };
-      }
-    }
+    window.addEventListener("pageReady", handlePageReady);
+    return () => {
+      window.removeEventListener("pageReady", handlePageReady);
+    };
   }, []);
   return (
     <>

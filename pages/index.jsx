@@ -32,6 +32,7 @@ const HomePage = ({ pages }) => {
   }, []);
   const handleFilterClick = (filterValue) => {
     isotopeInstanceRef.current?.arrange({ filter: filterValue });
+    window.scrollTo({ top: 0, behavior: "smooth" });
   };
   return (
     <Layout>
