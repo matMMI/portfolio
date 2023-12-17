@@ -1,28 +1,23 @@
 import "../app/globals.scss";
 import { useState, useEffect } from "react";
 import Head from "next/head";
+import { useRouter } from "next/router";
 import { AnimatePresence, motion } from "framer-motion";
-function MyApp({ Component, pageProps, router }) {
+function MyApp({ Component, pageProps }) {
+  const router = useRouter();
   const transitionSpringPhysics = {
     type: "spring",
-    mass: 1,
+    mass: 0.2,
     stiffness: 80,
-    damping: 10,
   };
   const transitionColor = "#000000";
-  const [isLoading, setIsLoading] = useState(true);
-  const styleLottie = {
-    width: 100,
-  };
   useEffect(() => {
-    const handlePageReady = () => {
-      setIsLoading(false);
-    };
-    window.addEventListener("pageReady", handlePageReady);
+    const handleRouteChangeStart = () => {};
+    router.events.on("routeChangeStart", handleRouteChangeStart);
     return () => {
-      window.removeEventListener("pageReady", handlePageReady);
+      router.events.off("routeChangeStart", handleRouteChangeStart);
     };
-  }, []);
+  }, [router]);
   return (
     <>
       <Head>
