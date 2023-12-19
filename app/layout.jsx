@@ -5,12 +5,6 @@ import "../app/globals.scss";
 import Lenis from "@studio-freight/lenis";
 import Navigation from "../components/navigation";
 function Layout(props) {
-  function toggleBars() {
-    const bars = document.querySelectorAll(".menu-trigger__bar");
-    bars.forEach((bar) => {
-      bar.classList.toggle("is-open");
-    });
-  }
   useEffect(() => {
     const lenis = new Lenis();
     lenis.on("scroll", (e) => {});
@@ -20,10 +14,6 @@ function Layout(props) {
     }
     requestAnimationFrame(raf);
     const menuTrigger = document.querySelector(".menu-trigger");
-    menuTrigger.addEventListener("click", toggleBars);
-    return () => {
-      menuTrigger.removeEventListener("click", toggleBars);
-    };
   }, []);
   return (
     <>

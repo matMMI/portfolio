@@ -1,23 +1,42 @@
 import "../app/globals.scss";
 import { useState, useEffect } from "react";
 import Head from "next/head";
-import { useRouter } from "next/router";
-import { AnimatePresence, motion } from "framer-motion";
+import Lottie from "lottie-react";
+import logo from "./logo.json";
 function MyApp({ Component, pageProps }) {
-  const router = useRouter();
-  const transitionSpringPhysics = {
-    type: "spring",
-    mass: 0.2,
-    stiffness: 80,
+  const [isLoading, setIsLoading] = useState({
+    visible: true,
+    translateY: "0%",
+  });
+  const styleLottie = {
+    width: 100,
   };
-  const transitionColor = "#000000";
   useEffect(() => {
-    const handleRouteChangeStart = () => {};
-    router.events.on("routeChangeStart", handleRouteChangeStart);
-    return () => {
-      router.events.off("routeChangeStart", handleRouteChangeStart);
+    const handleLoad = () => {
+      setTimeout(() => {
+        setIsLoading({
+          visible: true,
+          translateY: "-100%",
+        });
+      }, 500);
+      setTimeout(() => {
+        setIsLoading({
+          visible: false,
+        });
+      }, 2510);
     };
-  }, [router]);
+    if (typeof window !== "undefined") {
+      if (document.readyState === "complete") {
+        handleLoad();
+      } else {
+        window.addEventListener("load", handleLoad);
+
+        return () => {
+          window.removeEventListener("load", handleLoad);
+        };
+      }
+    }
+  }, []);
   return (
     <>
       <Head>
@@ -52,35 +71,27 @@ function MyApp({ Component, pageProps }) {
           }}
         />
       </Head>
-      <AnimatePresence mode="wait">
-        <motion.div key={router.route}>
-          <motion.div
-            style={{
-              backgroundColor: transitionColor,
-              position: "fixed",
-              width: "100vw",
-              zIndex: 1000,
-              bottom: 0,
-            }}
-            transition={transitionSpringPhysics}
-            animate={{ height: "0vh" }}
-            exit={{ height: "100vh" }}
-          />
-          <motion.div
-            style={{
-              backgroundColor: transitionColor,
-              position: "fixed",
-              width: "100vw",
-              zIndex: 1000,
-              top: 0,
-            }}
-            transition={transitionSpringPhysics}
-            initial={{ height: "100vh" }}
-            animate={{ height: "0vh", transition: { delay: 0.2 } }}
-          />
-          <Component {...pageProps} />
-        </motion.div>
-      </AnimatePresence>
+      {isLoading.visible ? (
+        <div
+          style={{
+            position: "fixed",
+            top: 0,
+            left: 0,
+            width: "100%",
+            height: "100%",
+            backgroundColor: "black",
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+            zIndex: 1000,
+            transform: `translateY(${isLoading.translateY})`,
+            transition: "2s cubic-bezier(.42,0,0,.98)",
+          }}
+        >
+          <Lottie style={styleLottie} loop={true} animationData={logo} />
+        </div>
+      ) : null}
+      <Component {...pageProps} />
     </>
   );
 }
