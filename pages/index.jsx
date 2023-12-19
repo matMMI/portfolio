@@ -21,9 +21,10 @@ const HomePage = ({ pages }) => {
     });
     const btnFilter = document.querySelector(".btnFilter");
     const filter = document.querySelector(".filter");
-    if (btnFilter && filter) {
+    if (btnFilter) {
       btnFilter.addEventListener("click", () => {
-        filter.classList.toggle("active");
+        const isActive = filter.classList.toggle("active");
+        handleFilterClick(isActive ? "*" : ""); // Passer '*' pour afficher tous les éléments si actif
       });
     }
     return () => {
@@ -31,9 +32,16 @@ const HomePage = ({ pages }) => {
     };
   }, []);
   const handleFilterClick = (filterValue) => {
-    isotopeInstanceRef.current?.arrange({ filter: filterValue });
+    const filterClass = "active";
+    const filterContainer = document.querySelector(".item-menu.filter");
+    if (filterContainer.classList.contains(filterClass)) {
+      isotopeInstanceRef.current?.arrange({ filter: filterValue });
+    } else {
+      isotopeInstanceRef.current?.arrange({ filter: "*" });
+    }
     window.scrollTo({ top: 0, behavior: "smooth" });
   };
+
   return (
     <Layout>
       <div className="parentFilter">
