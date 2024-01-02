@@ -25,6 +25,7 @@
     "eslint-config-next": "13.2.4",
     "export": "^0.1.337",
     "framer-motion": "^10.16.16",
+    "he": "^1.2.0",
     "imagesloaded": "^5.0.0",
     "isotope-layout": "^3.0.6",
     "jquery": "^3.7.1",
