@@ -19,12 +19,12 @@ function MyApp({ Component, pageProps }) {
           visible: true,
           translateY: "-100%",
         });
-      }, 500);
+      }, 3000);
       setTimeout(() => {
         setIsLoading({
           visible: false,
         });
-      }, 2510);
+      }, 6000);
     };
     if (typeof window !== "undefined") {
       if (document.readyState === "complete") {
