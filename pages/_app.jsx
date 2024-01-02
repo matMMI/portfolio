@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 import Head from "next/head";
 import Lottie from "lottie-react";
 import logo from "./logo.json";
+
 function MyApp({ Component, pageProps }) {
   const [isLoading, setIsLoading] = useState({
     visible: true,
@@ -69,7 +70,7 @@ function MyApp({ Component, pageProps }) {
         })();
        `,
           }}
-        />
+        ></script>
       </Head>
       {isLoading.visible ? (
         <div
