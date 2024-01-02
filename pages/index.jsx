@@ -24,7 +24,7 @@ const HomePage = ({ pages }) => {
     if (btnFilter) {
       btnFilter.addEventListener("click", () => {
         const isActive = filter.classList.toggle("active");
-        handleFilterClick(isActive ? "*" : ""); // Passer '*' pour afficher tous les éléments si actif
+        handleFilterClick(isActive ? "*" : "");
       });
     }
     return () => {

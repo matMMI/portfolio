@@ -106,16 +106,6 @@ template {
   display: none;
 }
 
-.h1,
-h1 {
-  font-size: clamp(1.8rem, 2.25rem + 28 * (100vw - 640px) / 656, 3rem);
-  line-height: 1.1;
-}
-.h3,
-h3 {
-  font-size: clamp(1.125rem, 1.125rem + 6 * (100vw - 640px) / 656, 1.5rem);
-  line-height: 1.4;
-}
 img,
 svg {
   max-width: 100%;
@@ -144,7 +134,7 @@ h1 {
 }
 h1 .txt {
   white-space: nowrap;
-  font-size: 4vh;
+  text-transform: uppercase;
   -webkit-animation: scrollTxt 50s linear infinite;
   animation: scrollTxt 50s linear infinite;
 }
@@ -347,16 +337,6 @@ footer p {
 }
 /* -------------------- LOADER -------------------- */
 
-@media (max-width: 959.98px) {
-  h1 .txt {
-    font-size: 40px;
-  }
-}
-@media (max-width: 500px) {
-  h1 .txt {
-    font-size: 20px;
-  }
-}
 .error {
   display: flex;
   justify-content: center;
