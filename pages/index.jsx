@@ -53,7 +53,11 @@ const HomePage = ({ pages }) => {
                   className="icon"
                   data-filter={`.${flt.filtre}`}
                   key={flt.image}
-                  onClick={() => handleFilterClick(`.${flt.filtre}`)}
+                  onClick={() => {
+                    handleFilterClick(`.${flt.filtre}`);
+                    const filter = document.querySelector(".item-menu.filter");
+                    filter.classList.remove("active");
+                  }}
                 >
                   <Image
                     width={100}
