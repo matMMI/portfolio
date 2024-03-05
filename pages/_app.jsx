@@ -1,9 +1,11 @@
 import "../app/globals.scss";
+import dynamic from "next/dynamic";
 import { useState, useEffect } from "react";
 import Head from "next/head";
-import Lottie from "lottie-react";
+const Lottie = dynamic(() => import("lottie-react"), {
+  ssr: false,
+});
 import logo from "./logo.json";
-
 function MyApp({ Component, pageProps }) {
   const [isLoading, setIsLoading] = useState({
     visible: true,

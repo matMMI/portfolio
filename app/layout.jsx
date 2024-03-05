@@ -22,12 +22,14 @@ function Layout(props) {
       <header>
         <h1>
           <span className="txt t1">
-            - MATHIS TOGNI - ÉTUDIANT EN MASTER DESIGN d'expérience et design
-            d'interface À INGÉMÉDIA - DÉVELOPPEUR WEB ET UX/UI DESIGNER 
+            - MATHIS TOGNI - ÉTUDIANT EN MASTER DESIGN d&apos;expérience et
+            design d&apos;interface À INGÉMÉDIA - DÉVELOPPEUR WEB ET UX/UI
+            DESIGNER 
           </span>
           <span className="txt t2">
-            - MATHIS TOGNI - ÉTUDIANT EN MASTER DESIGN d'expérience et design
-            d'interface À INGÉMÉDIA - DÉVELOPPEUR WEB ET UX/UI DESIGNER 
+            - MATHIS TOGNI - ÉTUDIANT EN MASTER DESIGN d&apos;expérience et
+            design d&apos;interface À INGÉMÉDIA - DÉVELOPPEUR WEB ET UX/UI
+            DESIGNER 
           </span>
         </h1>
       </header>
