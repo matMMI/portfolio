@@ -2,7 +2,7 @@ import axios from "axios";
 import Layout from "../app/layout";
 import Filter from "../components/filter";
 import { useEffect, useRef } from "react";
-
+import Atropos from "atropos/react";
 export async function getServerSideProps() {
   const response = await axios.get(
     "https://apiportfolio.mathistogni.fr/wp-json/acf/v3/pages"
@@ -62,32 +62,34 @@ const HomePage = ({ pages }) => {
         {pages.map((page) =>
           page.acf.bloc_image.map((blocImage) => (
             <div
-              className={`item ${blocImage.filtre}`}
+              className={`item ${blocImage.filtre} atropos my-atropos`}
               key={blocImage.image}
               onClick={() => {}}
             >
-              <div className="square">
-                <div className="content">
-                  <div
-                    className="img"
-                    style={{ backgroundImage: `url(${blocImage.image})` }}
-                  />
-                </div>
-                <div className="text">
-                  <div className="title_item">
-                    <h2>{blocImage.titre}</h2>
-                    <p>{blocImage.dropdown}</p>
+              <Atropos className="my-atropos">
+                <div className="square">
+                  <div className="content">
+                    <div
+                      className="img"
+                      style={{ backgroundImage: `url(${blocImage.image})` }}
+                    />
                   </div>
-                  <a
-                    className="link"
-                    href={blocImage.lien}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    VOIR PLUS
-                  </a>
+                  <div className="text">
+                    <div className="title_item">
+                      <h2>{blocImage.titre}</h2>
+                      <p>{blocImage.dropdown}</p>
+                    </div>
+                    <a
+                      className="link"
+                      href={blocImage.lien}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      VOIR PLUS
+                    </a>
+                  </div>
                 </div>
-              </div>
+              </Atropos>
             </div>
           ))
         )}
