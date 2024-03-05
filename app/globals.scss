@@ -667,3 +667,54 @@ footer p {
     transform: translateX(0%);
   }
 }
+
+// framer motion
+.slide-in {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  z-index: 999;
+  background-image: linear-gradient(
+    to left bottom,
+    #d16ba5,
+    #c867b3,
+    #b966c2,
+    #a367d1,
+    #846be0,
+    #6482f1,
+    #3e97fb,
+    #00a9ff,
+    #00cbff,
+    #00e5e0,
+    #00f896,
+    #b7ff3b
+  );
+  transform-origin: bottom;
+}
+
+.slide-out {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  z-index: 999;
+  background-image: linear-gradient(
+    to left bottom,
+    #d16ba5,
+    #c867b3,
+    #b966c2,
+    #a367d1,
+    #846be0,
+    #6482f1,
+    #3e97fb,
+    #00a9ff,
+    #00cbff,
+    #00e5e0,
+    #00f896,
+    #b7ff3b
+  );
+  transform-origin: top;
+}

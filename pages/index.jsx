@@ -1,7 +1,20 @@
 import axios from "axios";
 import Layout from "../app/layout";
-import Image from "next/image";
+import Filter from "../components/filter";
 import { useEffect, useRef } from "react";
+
+export async function getServerSideProps() {
+  const response = await axios.get(
+    "https://apiportfolio.mathistogni.fr/wp-json/acf/v3/pages"
+  );
+  const data = await response.data;
+  return {
+    props: {
+      pages: data,
+    },
+  };
+}
+
 const HomePage = ({ pages }) => {
   const gridRef = useRef();
   const isotopeInstanceRef = useRef();
@@ -44,34 +57,7 @@ const HomePage = ({ pages }) => {
 
   return (
     <Layout>
-      <div className="parentFilter">
-        <div className="item-menu filter">
-          <ul>
-            {pages.map((page) =>
-              page.acf.filtre.map((flt) => (
-                <li
-                  className="icon"
-                  data-filter={`.${flt.filtre}`}
-                  key={flt.image}
-                  onClick={() => {
-                    handleFilterClick(`.${flt.filtre}`);
-                    const filter = document.querySelector(".item-menu.filter");
-                    filter.classList.remove("active");
-                  }}
-                >
-                  <Image
-                    width={100}
-                    height={100}
-                    src={flt.image}
-                    alt={flt.filtre}
-                    priority
-                  />
-                </li>
-              ))
-            )}
-          </ul>
-        </div>
-      </div>
+      <Filter pages={pages} onFilterClick={handleFilterClick} />
       <div className="item-detail text-center" ref={gridRef}>
         {pages.map((page) =>
           page.acf.bloc_image.map((blocImage) => (
@@ -109,15 +95,5 @@ const HomePage = ({ pages }) => {
     </Layout>
   );
 };
-export async function getServerSideProps() {
-  const response = await axios.get(
-    "https://apiportfolio.mathistogni.fr/wp-json/acf/v3/pages"
-  );
-  const data = await response.data;
-  return {
-    props: {
-      pages: data,
-    },
-  };
-}
+
 export default HomePage;

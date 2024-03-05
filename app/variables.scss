@@ -9,3 +9,41 @@
 
 $col2: #fff;
 $col3: #000;
+// Définition des couleurs
+$colors: (
+  redAlert: (
+    #270610,
+    #cf3c3c,
+  ),
+  blueAlert: (
+    #060727,
+    #513ccf,
+  ),
+  greenAlert: (
+    #0c2706,
+    #59cf3c,
+  ),
+  yellowAlert: (
+    #1f1e02,
+    #fff733,
+  ),
+);
+
+// Mixin pour les alertes
+@mixin alertStyle($bg, $border) {
+  background-color: $bg;
+  border: 2px solid $border;
+  padding: 10px 20px;
+  border-radius: 50px;
+}
+
+// Boucle à travers chaque couleur et création de la classe alerte
+@each $alert, $colors in $colors {
+  .#{$alert} {
+    @include alertStyle(nth($colors, 1), nth($colors, 2));
+    // Modifier le border-radius pour la classe .yellowAlert
+    // @if $alert == yellowAlert {
+    //   border-radius: 20px;
+    // }
+  }
+}

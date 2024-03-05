@@ -24,7 +24,7 @@
     "eslint": "8.36.0",
     "eslint-config-next": "13.2.4",
     "export": "^0.1.337",
-    "framer-motion": "^10.16.16",
+    "framer-motion": "^10.18.0",
     "he": "^1.2.0",
     "imagesloaded": "^5.0.0",
     "isotope-layout": "^3.0.6",
@@ -51,7 +51,8 @@
     "postcss-preset-env": "^8.3.2",
     "purgecss": "^5.0.0",
     "react-xmasonry": "^3.0.6",
-    "sass": "^1.69.4"
+    "sass": "^1.69.4",
+    "tailwindcss": "^3.4.1"
   },
   "browserslist": [
     "> 0.5%",
