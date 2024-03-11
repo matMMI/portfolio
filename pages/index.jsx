@@ -2,6 +2,7 @@ import axios from "axios";
 import Layout from "../app/layout";
 import Filter from "../components/filter";
 import { useEffect, useRef } from "react";
+import Image from "next/image";
 import Atropos from "atropos/react";
 export async function getServerSideProps() {
   const response = await axios.get(
@@ -80,7 +81,7 @@ const HomePage = ({ pages }) => {
                       <p>{blocImage.dropdown}</p>
                     </div>
                     <a
-                      className="link"
+                      className="link text-lime-500"
                       href={blocImage.lien}
                       target="_blank"
                       rel="noopener noreferrer"
