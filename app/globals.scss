@@ -161,21 +161,9 @@ h1 .txt {
 }
 .item {
   width: 25%;
-
   position: relative;
-  border: 1px solid #000;
 }
-@media (max-width: 500px) {
-  .item-detail {
-    border: 0;
-  }
-  .item {
-    border-top: 1px solid #000;
-    border-bottom: 1px solid #000;
-    border-left: 0;
-    border-right: 0;
-  }
-}
+
 .square {
   overflow: hidden;
   position: relative;

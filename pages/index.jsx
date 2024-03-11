@@ -63,25 +63,28 @@ const HomePage = ({ pages }) => {
         {pages.map((page) =>
           page.acf.bloc_image.map((blocImage) => (
             <div
-              className={`item ${blocImage.filtre} atropos my-atropos`}
+              className={`item max-w-sm rounded shadow-lg m-4 ${blocImage.filtre}`}
               key={blocImage.image}
               onClick={() => {}}
             >
               <Atropos className="my-atropos">
-                <div className="square">
-                  <div className="content">
-                    <div
-                      className="img"
-                      style={{ backgroundImage: `url(${blocImage.image})` }}
-                    />
-                  </div>
-                  <div className="text">
-                    <div className="title_item">
-                      <h2>{blocImage.titre}</h2>
-                      <p>{blocImage.dropdown}</p>
+                <div className="bg-white rounded-md overflow-hidden ">
+                  <img
+                    className="w-full "
+                    src={blocImage.image}
+                    alt={blocImage.titre}
+                  />
+                  <div className="px-6 py-4">
+                    <div className="font-bold text-xl mb-2">
+                      {blocImage.titre}
                     </div>
+                    <p className="text-gray-700 text-base">
+                      {blocImage.dropdown}
+                    </p>
+                  </div>
+                  <div className="px-6 pt-4 pb-2">
                     <a
-                      className="link text-lime-500"
+                      className="inline-block bg-blue-500 rounded-full px-3 py-1 text-sm font-semibold text-white hover:bg-blue-700"
                       href={blocImage.lien}
                       target="_blank"
                       rel="noopener noreferrer"
