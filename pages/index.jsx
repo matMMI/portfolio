@@ -59,44 +59,50 @@ const HomePage = ({ pages }) => {
   return (
     <Layout>
       <Filter pages={pages} onFilterClick={handleFilterClick} />
-      <div className="item-detail text-center" ref={gridRef}>
-        {pages.map((page) =>
-          page.acf.bloc_image.map((blocImage) => (
-            <div
-              className={`item max-w-sm rounded shadow-lg m-4 ${blocImage.filtre}`}
-              key={blocImage.image}
-              onClick={() => {}}
-            >
-              <Atropos className="my-atropos">
-                <div className="bg-white rounded-md overflow-hidden ">
-                  <img
-                    className="w-full "
-                    src={blocImage.image}
-                    alt={blocImage.titre}
-                  />
-                  <div className="px-6 py-4">
-                    <div className="font-bold text-xl mb-2">
-                      {blocImage.titre}
+      <div className="container">
+        <div className="row text-center " ref={gridRef}>
+          {pages.map((page) =>
+            page.acf.bloc_image.map((blocImage) => (
+              <div
+                className={`col-md-4 col-sm-6 col-12 mb-8 w-full item rounded shadow-lg  ${blocImage.filtre}`}
+                key={blocImage.image}
+                onClick={() => {}}
+              >
+                <Atropos
+                  className="my-atropos"
+                  activeOffset={40}
+                  shadowScale={1.05}
+                >
+                  <div className="bg-zinc-900 rounded-md overflow-hidden ">
+                    <img
+                      className="w-full"
+                      src={blocImage.image}
+                      alt={blocImage.titre}
+                    />
+                    <div className="px-6 py-4">
+                      <div className="font-bold text-xl mb-2 text-teal-300">
+                        {blocImage.titre}
+                      </div>
+                      <p className="text-emerald-300 text-base">
+                        {blocImage.dropdown}
+                      </p>
                     </div>
-                    <p className="text-gray-700 text-base">
-                      {blocImage.dropdown}
-                    </p>
+                    <div data-atropos-offset="3" className=" px-6 pt-4 pb-2">
+                      <a
+                        className="bg-blue-500 rounded-full px-3 py-1 text-sm font-semibold text-white hover:bg-blue-700"
+                        href={blocImage.lien}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
+                        VOIR PLUS
+                      </a>
+                    </div>
                   </div>
-                  <div className="px-6 pt-4 pb-2">
-                    <a
-                      className="inline-block bg-blue-500 rounded-full px-3 py-1 text-sm font-semibold text-white hover:bg-blue-700"
-                      href={blocImage.lien}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                    >
-                      VOIR PLUS
-                    </a>
-                  </div>
-                </div>
-              </Atropos>
-            </div>
-          ))
-        )}
+                </Atropos>
+              </div>
+            ))
+          )}
+        </div>
       </div>
     </Layout>
   );

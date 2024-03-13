@@ -4,6 +4,7 @@ import { useRouter } from "next/router";
 import { motion, AnimatePresence } from "framer-motion";
 import { useState, useEffect } from "react";
 import Head from "next/head";
+
 const Lottie = dynamic(() => import("lottie-react"), {
   ssr: false,
 });
@@ -17,32 +18,32 @@ function MyApp({ Component, pageProps }) {
   const styleLottie = {
     width: 100,
   };
-  // useEffect(() => {
-  //   const handleLoad = () => {
-  //     setTimeout(() => {
-  //       setIsLoading({
-  //         visible: true,
-  //         translateY: "-100%",
-  //       });
-  //     }, 3000);
-  //     setTimeout(() => {
-  //       setIsLoading({
-  //         visible: false,
-  //       });
-  //     }, 6000);
-  //   };
-  //   if (typeof window !== "undefined") {
-  //     if (document.readyState === "complete") {
-  //       handleLoad();
-  //     } else {
-  //       window.addEventListener("load", handleLoad);
+  useEffect(() => {
+    const handleLoad = () => {
+      setTimeout(() => {
+        setIsLoading({
+          visible: true,
+          translateY: "-100%",
+        });
+      }, 3000);
+      setTimeout(() => {
+        setIsLoading({
+          visible: false,
+        });
+      }, 6000);
+    };
+    if (typeof window !== "undefined") {
+      if (document.readyState === "complete") {
+        handleLoad();
+      } else {
+        window.addEventListener("load", handleLoad);
 
-  //       return () => {
-  //         window.removeEventListener("load", handleLoad);
-  //       };
-  //     }
-  //   }
-  // }, []);
+        return () => {
+          window.removeEventListener("load", handleLoad);
+        };
+      }
+    }
+  }, []);
   return (
     <>
       <AnimatePresence mode="wait">
@@ -79,40 +80,33 @@ function MyApp({ Component, pageProps }) {
               }}
             ></script>
           </Head>
-          {/* {isLoading.visible ? (
-        <div
-          style={{
-            position: "fixed",
-            top: 0,
-            left: 0,
-            width: "100%",
-            height: "100%",
-            backgroundColor: "black",
-            display: "flex",
-            justifyContent: "center",
-            alignItems: "center",
-            zIndex: 1000,
-            transform: `translateY(${isLoading.translateY})`,
-            transition: "2s cubic-bezier(.42,0,0,.98)",
-          }}
-        >
-          <Lottie style={styleLottie} loop={true} animationData={logo} />
-        </div>
-      ) : null} */}
+          {isLoading.visible ? (
+            <div
+              style={{
+                position: "fixed",
+                top: 0,
+                left: 0,
+                width: "100%",
+                height: "100%",
+                backgroundColor: "black",
+                display: "flex",
+                justifyContent: "center",
+                alignItems: "center",
+                zIndex: 1000,
+                transform: `translateY(${isLoading.translateY})`,
+                transition: "2s cubic-bezier(.42,0,0,.98)",
+              }}
+            >
+              <Lottie style={styleLottie} loop={true} animationData={logo} />
+            </div>
+          ) : null}
 
           <Component {...pageProps} />
           <motion.div
             className="slide-in"
-            initial={{ x: "0%" }}
-            animate={{ x: "-100%" }}
-            exit={{ x: "0%" }}
-            transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
-          ></motion.div>
-          <motion.div
-            className="slide-out"
-            initial={{ x: "0%" }}
-            animate={{ x: "100%" }}
-            exit={{ x: "0%" }}
+            initial={{ y: "0%" }}
+            animate={{ y: "-100%" }}
+            exit={{ y: "0%" }}
             transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
           ></motion.div>
         </motion.div>

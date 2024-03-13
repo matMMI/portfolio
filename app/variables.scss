@@ -13,7 +13,7 @@ $col3: #000;
 $colors: (
   redAlert: (
     #270610,
-    #cf3c3c,
+    #ff3939,
   ),
   blueAlert: (
     #060727,
@@ -32,15 +32,13 @@ $colors: (
 // Mixin pour les alertes
 @mixin alertStyle($bg, $border) {
   background-color: $bg;
-  border: 2px solid $border;
   padding: 10px 20px;
-  border-radius: 50px;
 }
 
 // Boucle à travers chaque couleur et création de la classe alerte
 @each $alert, $colors in $colors {
   .#{$alert} {
-    @include alertStyle(nth($colors, 1), nth($colors, 2));
+    @include alertStyle(nth($colors, 2), nth($colors, 1));
     // Modifier le border-radius pour la classe .yellowAlert
     // @if $alert == yellowAlert {
     //   border-radius: 20px;
