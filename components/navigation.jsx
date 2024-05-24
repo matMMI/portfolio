@@ -1,10 +1,10 @@
 import React from "react";
 
-const navigation = () => {
+const navigation = ({ onFilterButtonClick }) => {
   return (
     <>
       <div className="group_menu">
-        <div className="btnFilter">
+        <div className="btnFilter" onClick={onFilterButtonClick}>
           <svg
             viewBox="0 0 50 50"
             width="50"

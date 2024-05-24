@@ -32,7 +32,9 @@
     "components/header.jsx",
     "pages/index.jsx",
     "app/layout.jsx",
-    "app/p/page.jsx"
+    "app/p/page.jsx",
+    "tailwind.config.ts",
+    "components/card.jsx"
   ],
   "exclude": ["node_modules"]
 }

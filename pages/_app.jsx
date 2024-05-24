@@ -44,24 +44,41 @@ function MyApp({ Component, pageProps }) {
       }
     }
   }, []);
+  useEffect(() => {
+    const handleRouteChange = () => {
+      // Conserver la position de défilement actuelle
+      const scrollY = window.scrollY;
+      document.documentElement.style.setProperty("--scroll-y", `${scrollY}px`);
+    };
+    const handleRouteComplete = () => {
+      // Réappliquer la position de défilement après le changement de route
+      const scrollY =
+        document.documentElement.style.getPropertyValue("--scroll-y");
+      window.scrollTo(0, parseInt(scrollY || "0"));
+    };
+    router.events.on("routeChangeStart", handleRouteChange);
+    router.events.on("routeChangeComplete", handleRouteComplete);
+    return () => {
+      router.events.off("routeChangeStart", handleRouteChange);
+      router.events.off("routeChangeComplete", handleRouteComplete);
+    };
+  }, [router.events]);
   return (
     <>
-      <AnimatePresence mode="wait">
-        <motion.div key={router.pathname}>
-          <Head>
-            <title>→ Mathis TOGNI · WEB DEVELOPER & UX/UI DESIGNER</title>
-            <meta
-              name="description"
-              content="Étudiant en Master UX/UI à l'UFR Ingémédia de Toulon, j'aime créer des projets autour du Web, de la conception graphique jusqu'au développement de sites sur mesure."
-            />
-            <link
-              rel="icon"
-              href="https://apiportfolio.mathistogni.fr/favicon.ico"
-              sizes="any"
-            />
-            <script
-              dangerouslySetInnerHTML={{
-                __html: `
+      <Head>
+        <title>→ Mathis TOGNI · WEB DEVELOPER & UX/UI DESIGNER</title>
+        <meta
+          name="description"
+          content="Étudiant en Master UX/UI à l'UFR Ingémédia de Toulon, j'aime créer des projets autour du Web, de la conception graphique jusqu'au développement de sites sur mesure."
+        />
+        <link
+          rel="icon"
+          href="https://apiportfolio.mathistogni.fr/favicon.ico"
+          sizes="any"
+        />
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
         var _paq = (window._paq = window._paq || []);
         _paq.push(["trackPageView"]);
         _paq.push(["enableLinkTracking"]);
@@ -77,9 +94,11 @@ function MyApp({ Component, pageProps }) {
           s.parentNode.insertBefore(g, s);
         })();
        `,
-              }}
-            ></script>
-          </Head>
+          }}
+        ></script>
+      </Head>
+      <AnimatePresence mode="wait">
+        <motion.div key={router.pathname}>
           {isLoading.visible ? (
             <div
               style={{

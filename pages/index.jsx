@@ -1,9 +1,10 @@
+import React, { useEffect, useRef, useState } from "react";
 import axios from "axios";
 import Layout from "../app/layout";
-import Filter from "../components/filter";
-import { useEffect, useRef } from "react";
+import Navigation from "../components/navigation";
+import { WavyBackgroundDemo } from "../components/wavybackground";
 import Image from "next/image";
-import Atropos from "atropos/react";
+import Card from "../components/card";
 export async function getServerSideProps() {
   const response = await axios.get(
     "https://apiportfolio.mathistogni.fr/wp-json/acf/v3/pages"
@@ -15,8 +16,30 @@ export async function getServerSideProps() {
     },
   };
 }
-
+const colors = [
+  "red-400",
+  "green-400",
+  "blue-400",
+  "yellow-400",
+  "purple-400",
+  "pink-400",
+  "teal-400",
+];
+const filterColors = (pages) => {
+  const filters = [
+    ...new Set(
+      pages.flatMap((page) => page.acf.filtre.map((flt) => flt.filtre))
+    ),
+  ];
+  const filterColorMap = {};
+  filters.forEach((filter, index) => {
+    filterColorMap[filter] = colors[index % colors.length];
+  });
+  return filterColorMap;
+};
 const HomePage = ({ pages }) => {
+  const filterColorMap = filterColors(pages);
+  const [filterVisible, setFilterVisible] = useState(false);
   const gridRef = useRef();
   const isotopeInstanceRef = useRef();
   useEffect(() => {
@@ -55,57 +78,63 @@ const HomePage = ({ pages }) => {
     }
     window.scrollTo({ top: 0, behavior: "smooth" });
   };
+  const handleFilterButtonClick = () => {
+    setFilterVisible((prev) => !prev);
+    const filter = document.querySelector(".item-menu.filter ");
+    if (!filterVisible) {
+      filter.classList.add("active");
+    } else {
+      filter.classList.remove("active");
+    }
+  };
 
   return (
     <Layout>
-      <Filter pages={pages} onFilterClick={handleFilterClick} />
-      <div className="container">
-        <div className="row text-center " ref={gridRef}>
-          {pages.map((page) =>
-            page.acf.bloc_image.map((blocImage) => (
-              <div
-                className={`col-md-4 col-sm-6 col-12 mb-8 w-full item rounded shadow-lg  ${blocImage.filtre}`}
-                key={blocImage.image}
-                onClick={() => {}}
-              >
-                <Atropos
-                  className="my-atropos"
-                  activeOffset={40}
-                  shadowScale={1.05}
+      <Navigation onFilterButtonClick={handleFilterButtonClick} />
+      <WavyBackgroundDemo title="MATHIS TOGNI" />
+      <div className="parentFilter">
+        <div className="item-menu filter">
+          <ul>
+            {pages.map((page) =>
+              page.acf.filtre.map((flt) => (
+                <li
+                  className="icon"
+                  data-filter={`.${flt.filtre}`}
+                  key={flt.image}
+                  onClick={() => {
+                    handleFilterClick(`.${flt.filtre}`);
+                    const filter = document.querySelector(".item-menu.filter");
+                    filter.classList.remove("active");
+                  }}
                 >
-                  <div className="bg-zinc-900 rounded-md overflow-hidden ">
-                    <img
-                      className="w-full"
-                      src={blocImage.image}
-                      alt={blocImage.titre}
-                    />
-                    <div className="px-6 py-4">
-                      <div className="font-bold text-xl mb-2 text-teal-300">
-                        {blocImage.titre}
-                      </div>
-                      <p className="text-emerald-300 text-base">
-                        {blocImage.dropdown}
-                      </p>
-                    </div>
-                    <div data-atropos-offset="3" className=" px-6 pt-4 pb-2">
-                      <a
-                        className="bg-blue-500 rounded-full px-3 py-1 text-sm font-semibold text-white hover:bg-blue-700"
-                        href={blocImage.lien}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                      >
-                        VOIR PLUS
-                      </a>
-                    </div>
-                  </div>
-                </Atropos>
-              </div>
-            ))
-          )}
+                  <Image
+                    width={100}
+                    height={100}
+                    src={flt.image}
+                    alt={flt.filtre}
+                    priority
+                  />
+                </li>
+              ))
+            )}
+          </ul>
         </div>
+      </div>
+      <div className="item-detail text-center m-2" ref={gridRef}>
+        {pages.map((page, pageIndex) => (
+          <div key={pageIndex} className="flex flex-wrap">
+            {page.acf.bloc_image.map((bloc, blocIndex) => (
+              <Card
+                key={blocIndex}
+                bloc={bloc}
+                blocIndex={blocIndex}
+                filterColorMap={filterColorMap}
+              />
+            ))}
+          </div>
+        ))}
       </div>
     </Layout>
   );
 };
-
 export default HomePage;
