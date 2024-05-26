@@ -5,6 +5,7 @@ import Navigation from "../components/navigation";
 import { WavyBackgroundDemo } from "../components/wavybackground";
 import Image from "next/image";
 import Card from "../components/card";
+
 export async function getServerSideProps() {
   const response = await axios.get(
     "https://apiportfolio.mathistogni.fr/wp-json/acf/v3/pages"
@@ -16,6 +17,7 @@ export async function getServerSideProps() {
     },
   };
 }
+
 const colors = [
   "red-400",
   "green-400",
@@ -25,6 +27,7 @@ const colors = [
   "pink-400",
   "teal-400",
 ];
+
 const filterColors = (pages) => {
   const filters = [
     ...new Set(
@@ -37,11 +40,13 @@ const filterColors = (pages) => {
   });
   return filterColorMap;
 };
+
 const HomePage = ({ pages }) => {
   const filterColorMap = filterColors(pages);
   const [filterVisible, setFilterVisible] = useState(false);
   const gridRef = useRef();
   const isotopeInstanceRef = useRef();
+
   useEffect(() => {
     if (typeof window === "undefined") return;
     let Isotope;
@@ -56,6 +61,7 @@ const HomePage = ({ pages }) => {
         });
       });
     });
+
     const btnFilter = document.querySelector(".btnFilter");
     const filter = document.querySelector(".filter");
     if (btnFilter) {
@@ -68,6 +74,7 @@ const HomePage = ({ pages }) => {
       isotopeInstanceRef.current?.destroy();
     };
   }, []);
+
   const handleFilterClick = (filterValue) => {
     const filterClass = "active";
     const filterContainer = document.querySelector(".item-menu.filter");
@@ -76,16 +83,21 @@ const HomePage = ({ pages }) => {
     } else {
       isotopeInstanceRef.current?.arrange({ filter: "*" });
     }
-    window.scrollTo({ top: 0, behavior: "smooth" });
   };
+
   const handleFilterButtonClick = () => {
     setFilterVisible((prev) => !prev);
-    const filter = document.querySelector(".item-menu.filter ");
+    const filter = document.querySelector(".item-menu.filter");
     if (!filterVisible) {
       filter.classList.add("active");
     } else {
       filter.classList.remove("active");
     }
+  };
+
+  const handleIconClick = (filterValue) => {
+    handleFilterClick(filterValue);
+    window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
   return (
@@ -102,7 +114,7 @@ const HomePage = ({ pages }) => {
                   data-filter={`.${flt.filtre}`}
                   key={flt.image}
                   onClick={() => {
-                    handleFilterClick(`.${flt.filtre}`);
+                    handleIconClick(`.${flt.filtre}`);
                     const filter = document.querySelector(".item-menu.filter");
                     filter.classList.remove("active");
                   }}
@@ -137,4 +149,5 @@ const HomePage = ({ pages }) => {
     </Layout>
   );
 };
+
 export default HomePage;
